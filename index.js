@@ -7,10 +7,10 @@ var axios = require("axios");
 const getJsonMenu = () => {
   return axios
     .get(URI, {
-      headers: {
-        Referer: "http://www.sitepoint.com",
-        "X-Requested-With": "XMLHttpRequest",
-      },
+      // headers: {
+      //   Referer: "http://www.sitepoint.com",
+      //   "X-Requested-With": "XMLHttpRequest",
+      // },
     })
     .then(function (response) {
       const root = parse(response.data);
@@ -43,6 +43,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
+  res.type('json');
   getJsonMenu().then(data => res.send(data))
 })
 
