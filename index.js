@@ -43,6 +43,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
+  console.dir(req.hostname)
   res.type('json');
   getJsonMenu().then(data => res.send(data))
 })
