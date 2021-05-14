@@ -29,7 +29,7 @@ const getJsonMenu = () => {
             const price = itemNode.querySelector(".tmi-price .row");
             return {
               name: name.childNodes[0].rawText.trim(),
-              price: price.childNodes[0].rawText.trim(),
+              price: parseInt(price.childNodes[0].rawText.trim(), 10),
             };
           }),
         });
@@ -48,6 +48,6 @@ app.get('/', (req, res) => {
   getJsonMenu().then(data => res.send(data))
 })
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`App listening at http://localhost:${port}`)
 })
